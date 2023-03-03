@@ -53,41 +53,39 @@ async def rename_file(bot, msg):
         os.remove(og_thumbnail)
     except:
         pass
-    await sts.delete()
+    #await sts.delete()
      
     value = 2090000000
     if value < file.file_size:
-        await ms.edit("```Trying To Upload```")
+        await sts.edit("```Trying To Upload```")
         try:
             filw = await app.send_document(log_channel,document = file_path,thumb=ph_path,caption = caption,progress=progress_for_pyrogram,progress_args=( "```Trying To Uploading```",  ms, c_time   ))
             from_chat = filw.chat.id
             mg_id = filw.id
             time.sleep(2)
             await bot.copy_message(msg.from_user.id,from_chat,mg_id)
-            await ms.delete()
+            await sts.delete()
             os.remove(file_path)
             try:
                 os.remove(ph_path)
             except:
                 pass
         except Exception as e:
-            await ms.edit(e)
+            await sts.edit(e)
             os.remove(file_path)
             try:
                 os.remove(ph_path)
             except:
                 return
     else:
-    		await ms.edit("```Trying To Upload```")
+    		await sts.edit("```Trying To Upload```")
     		c_time = time.time()
      		try:
-     			await bot.send_document(update.from_user.id,document = file_path,thumb=ph_path,caption = caption,progress=progress_for_pyrogram,progress_args=( "```Trying To Uploading```",  ms, c_time   ))			
-     			await ms.delete()
+     			await bot.send_document(msg.from_user.id,document = file_path,thumb=ph_path,caption = caption,progress=progress_for_pyrogram,progress_args=( "```Trying To Uploading```",  ms, c_time   ))			
+     			await sts.delete()
      			os.remove(file_path)
      		except Exception as e:
-     			neg_used = used - int(file.file_size)
-     			used_limit(update.from_user.id,neg_used)
-     			await ms.edit(e)
+     			await sts.edit(e)
      			os.remove(file_path)
      			return 
      			     	
