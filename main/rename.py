@@ -24,6 +24,7 @@ async def rename_file(bot, msg):
     if not media:
        await msg.reply_text("Please Reply To An File or video or audio With filename + .extension eg:-(`.mkv` or `.mp4` or `.zip`)")
     og_media = getattr(reply, reply.media.value)
+    file = message.document or message.video or message.audio
     new_name = msg.text.split(" ", 1)[1]
     sts = await msg.reply_text("Trying to Downloading.....")
     c_time = time.time()
@@ -45,7 +46,7 @@ async def rename_file(bot, msg):
     await sts.edit("Trying to Uploading")
     c_time = time.time()
     value = 2090000000
-    if value < reply.media.value:
+    if value < file.file_size:
         try:
             await app.send_document(log_channel, document=downloaded, thumb=og_thumbnail, caption=cap, progress=progress_message, progress_args=("Uploade Started.....", sts, c_time))        
         except Exception as e:  
