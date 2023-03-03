@@ -78,14 +78,14 @@ async def rename_file(bot, msg):
             except:
                 return
     else:
-    		await sts.edit("```Trying To Upload```")
-    		c_time = time.time()
-     		try:
-     			await bot.send_document(msg.from_user.id,document = file_path,thumb=ph_path,caption = caption,progress=progress_for_pyrogram,progress_args=( "```Trying To Uploading```",  ms, c_time   ))			
-     			await sts.delete()
-     			os.remove(file_path)
-     		except Exception as e:
-     			await sts.edit(e)
-     			os.remove(file_path)
-     			return 
+    	   await sts.edit("```Trying To Upload```")
+    	   c_time = time.time()
+           try:
+     		   await bot.send_document(msg.from_user.id,document = file_path,thumb=ph_path,caption = caption,progress=progress_for_pyrogram,progress_args=( "```Trying To Uploading```",  ms, c_time   ))			
+     	       await sts.delete()
+     		   os.remove(file_path)
+     	   except Exception as e:
+     		   await sts.edit(e)
+     		   os.remove(file_path)
+     		   return 
      			     	
