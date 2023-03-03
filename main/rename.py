@@ -4,6 +4,16 @@ from pyrogram import Client, filters, enums
 from config import temp, CAPTION, ADMIN
 from main.utils import progress_message, humanbytes
 
+log_channel = int(os.environ.get("LOG_CHANNEL", ""))
+
+API_ID = int(os.environ.get("API_ID", ""))
+
+API_HASH = os.environ.get("API_HASH", "")
+
+STRING = os.environ.get("STRING", "")
+
+app = Client("test", api_id=API_ID, api_hash=API_HASH, session_string=STRING)
+
 @Client.on_message(filters.private & filters.command("rename") & filters.user(ADMIN))             
 async def rename_file(bot, msg):
     reply = msg.reply_to_message
@@ -44,3 +54,39 @@ async def rename_file(bot, msg):
     except:
         pass
     await sts.delete()
+         value = 2090000000
+     if value < file.file_size:
+         await ms.edit("```Trying To Upload```")
+         try:
+             filw = await app.send_document(log_channel,document = file_path,thumb=ph_path,caption = caption,progress=progress_for_pyrogram,progress_args=( "```Trying To Uploading```",  ms, c_time   ))
+             from_chat = filw.chat.id
+             mg_id = filw.id
+             time.sleep(2)
+             await bot.copy_message(msg.from_user.id,from_chat,mg_id)
+             await ms.delete()
+             os.remove(file_path)
+             try:
+                 os.remove(ph_path)
+             except:
+                 pass
+         except Exception as e:
+             await ms.edit(e)
+             os.remove(file_path)
+             try:
+                 os.remove(ph_path)
+             except:
+                 return
+     else:
+     		await ms.edit("```Trying To Upload```")
+     		c_time = time.time()
+     		try:
+     			await bot.send_document(update.from_user.id,document = file_path,thumb=ph_path,caption = caption,progress=progress_for_pyrogram,progress_args=( "```Trying To Uploading```",  ms, c_time   ))			
+     			await ms.delete()
+     			os.remove(file_path)
+     		except Exception as e:
+     			neg_used = used - int(file.file_size)
+     			used_limit(update.from_user.id,neg_used)
+     			await ms.edit(e)
+     			os.remove(file_path)
+     			return 
+     			     	
