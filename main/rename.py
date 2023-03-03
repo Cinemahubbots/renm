@@ -54,7 +54,8 @@ async def rename_file(bot, msg):
     except:
         pass
     await sts.delete()
-         value = 2090000000
+     
+     value = 2090000000
      if value < file.file_size:
          await ms.edit("```Trying To Upload```")
          try:
