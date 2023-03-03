@@ -45,7 +45,7 @@ async def rename_file(bot, msg):
     await sts.edit("Trying to Uploading")
     c_time = time.time()
     value = 2090000000
-    if value < file.file_size:
+    if value < file.reply.media.value:
         try:
             await app.send_document(log_channel, document=downloaded, thumb=og_thumbnail, caption=cap, progress=progress_message, progress_args=("Uploade Started.....", sts, c_time))        
         except Exception as e:  
