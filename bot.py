@@ -4,7 +4,7 @@ import os
 
 from main.rename import app as Client2
 
-TOKEN = os.environ.get("TOKEN", "")
+TOKEN = os.environ.get("BOT_TOKEN", "")
 
 API_ID = int(os.environ.get("API_ID", ""))
 
