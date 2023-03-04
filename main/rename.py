@@ -13,6 +13,7 @@ API_HASH = os.environ.get("API_HASH", "")
 STRING = os.environ.get("STRING", "")
 
 app = Client("test", api_id=API_ID, api_hash=API_HASH, session_string=STRING)
+app.start()
 
 @Client.on_message(filters.private & filters.command("rename") & filters.user(ADMIN))             
 async def rename_file(bot, msg):
