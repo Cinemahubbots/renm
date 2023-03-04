@@ -15,11 +15,8 @@ class Bot(Client):
             sleep_threshold=10,
         )
 
-STRING = os.environ.get("STRING", "")
 
-app = Client("prmium", api_id=API_ID, api_hash=API_HASH, session_string=STRING)
 
 bot = Bot()
 bot.run()
-app.start()
-idle()
+
