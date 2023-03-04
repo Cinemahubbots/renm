@@ -50,7 +50,11 @@ async def rename_file(bot, msg):
     value = 2090000000
     if value < file.file_size:
         try:
-            await app.send_document(log_channel, document=downloaded, thumb=og_thumbnail, caption=cap, progress=progress_message, progress_args=("Uploade Started.....", sts, c_time))        
+            filw = await app.send_document(log_channel, document=downloaded, thumb=og_thumbnail, caption=cap, progress=progress_message, progress_args=("Uploade Started.....", sts, c_time))  
+            from_chat = filw.chat.id
+            mg_id = filw.id
+            time.sleep(2)
+            await bot.copy_message(msg.from_user.id,from_chat,mg_id)
         except Exception as e:  
             await sts.edit(f"Error {e}") 
             return               
