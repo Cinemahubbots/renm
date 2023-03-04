@@ -1,7 +1,6 @@
 from pyrogram import Client
 from config import *
-from route import web_server
-from aiohttp import web
+
 
 class Bot(Client):
     def __init__(self):
@@ -15,6 +14,10 @@ class Bot(Client):
             sleep_threshold=10,
         )
 
+STRING = os.environ.get("STRING", "")
+
+app = Client("prmium", api_id=API_ID, api_hash=API_HASH, session_string=STRING)
 
 bot = Bot()
 bot.run()
+app.start()
