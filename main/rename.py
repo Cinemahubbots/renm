@@ -60,7 +60,7 @@ async def rename_file(bot, msg):
         await sts.delete()
     else:  
         try:
-            await app.send_document(msg.chat.id, document=downloaded, thumb=og_thumbnail, caption=cap, progress=progress_message, progress_args=("Uploade Started.....", sts, c_time))        
+            await bot.send_document(msg.chat.id, document=downloaded, thumb=og_thumbnail, caption=cap, progress=progress_message, progress_args=("Uploade Started.....", sts, c_time))        
         except Exception as e:  
             await sts.edit(f"Error {e}") 
             return               
