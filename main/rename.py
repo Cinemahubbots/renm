@@ -3,6 +3,7 @@ import os
 from pyrogram import Client, filters, enums
 from config import temp, CAPTION, ADMIN
 from main.utils import progress_message, humanbytes
+from bot import app
 
 log_channel = int(os.environ.get("LOG_CHANNEL", ""))
 
@@ -10,9 +11,9 @@ API_ID = int(os.environ.get("API_ID", ""))
 
 API_HASH = os.environ.get("API_HASH", "")
 
-STRING = os.environ.get("STRING", "")
+#STRING = os.environ.get("STRING", "")
 
-app = Client("prmium", api_id=API_ID, api_hash=API_HASH, session_string=STRING)
+#app = Client("prmium", api_id=API_ID, api_hash=API_HASH, session_string=STRING)
 
 
 @Client.on_message(filters.private & filters.command("rename") & filters.user(ADMIN))             
