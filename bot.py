@@ -1,6 +1,7 @@
 from pyrogram import Client
 from config import *
-
+import time
+import os
 
 class Bot(Client):
     def __init__(self):
